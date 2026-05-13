@@ -6,10 +6,10 @@ import { AppError } from "@/utils/app-error";
 class ProductController {
   async index(request: Request, response: Response, next: NextFunction) {
     try {
-      const { name } = request.query; // recuperar o nome do produto da query string
+      const { name } = request.query; 
       const products = await knex<ProductRepository>("products")
-        .select() // selecionar apenas os campos necessários
-        .whereLike("name", `%${name ?? ""}%`) // like no banco de dados fica
+        .select() 
+        .whereLike("name", `%${name ?? ""}%`) 
         .orderBy("name");
 
       return response.json({ products });
