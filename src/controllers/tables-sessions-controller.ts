@@ -54,11 +54,11 @@ class TablesSessionsController {
         .first();
 
       if (!session) {
-        throw new AppError("Session table not found");
+        throw new AppError("Table session not found");
       }
 
       if (session.closed_at) {
-        throw new AppError("This session table is already closed");
+        throw new AppError("This table session is already closed");
       }
 
       await knex<TableSessionRepository>("tables_sessions")
