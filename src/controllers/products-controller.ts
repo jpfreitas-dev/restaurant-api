@@ -4,6 +4,7 @@ import { z } from "zod";
 import { AppError } from "@/utils/app-error";
 
 class ProductController {
+  // Lista os produtos, com filtro opcional por nome
   async index(request: Request, response: Response, next: NextFunction) {
     try {
       const { name } = request.query; 
@@ -18,6 +19,7 @@ class ProductController {
     }
   };
 
+  // Cria um novo produto
   async create(request: Request, response: Response, next: NextFunction) {
     try {
       const bodySchema = z.object({
@@ -35,6 +37,7 @@ class ProductController {
     }
   };
 
+  // Atualiza um produto existente
   async update(request: Request, response: Response, next: NextFunction) {
     try {
       const id = z
@@ -67,6 +70,7 @@ class ProductController {
     }
   };
 
+  // Remove um produto
   async remove(request: Request, response: Response, next: NextFunction) {
     try {
       const id = z

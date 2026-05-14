@@ -4,6 +4,7 @@ import { Request, Response, NextFunction } from "express";
 import { z } from "zod";
 
 class TablesSessionsController {
+  // Cria uma nova sessão para uma mesa
   async create(request: Request, response: Response, next: NextFunction) {
     try {
       const bodySchema = z.object({
@@ -32,6 +33,7 @@ class TablesSessionsController {
     }
   }
 
+  // Lista as sessões de mesa, ordenando as abertas primeiro
   async index(request: Request, response: Response, next: NextFunction) {
     try {
       const sessions = await knex<TableSessionRepository>("tables_sessions").orderBy("closed_at");
@@ -41,6 +43,7 @@ class TablesSessionsController {
     }
   }
 
+  // Fecha uma sessão de mesa
   async update(request: Request, response: Response, next: NextFunction) {
     try {
       const id = z

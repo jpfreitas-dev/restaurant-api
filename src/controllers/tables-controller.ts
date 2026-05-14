@@ -2,6 +2,7 @@ import {  Request, Response, NextFunction } from "express";
 import { knex } from "@/database/knex";
 
 class TablesController {
+  // Lista as mesas
   async index(request: Request, response: Response, next: NextFunction) {
     try {
       const tables = await knex<TableRepository>("tables")
